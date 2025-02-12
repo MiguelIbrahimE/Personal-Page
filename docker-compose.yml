@@ -1,0 +1,17 @@
+services:
+  frontend:
+    container_name: personal-page-frontend
+    build:
+      context: ./fe
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      # Mount only the 'fe' folder so your code changes trigger live reload
+      - ./fe:/app
+      # Keeps node_modules in the container to avoid conflicts
+      - /app/node_modules
+    environment:
+      # Needed to ensure file changes are detected on certain OS (Windows/Mac)
+      - CHOKIDAR_USEPOLLING=true
+    command: ["npm", "start"]
