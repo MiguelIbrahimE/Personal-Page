@@ -2,48 +2,71 @@ import React from 'react';
 import './App.css';
 
 /**
- * Simple inline SVG components for LinkedIn & GitHub icons
- * (No extra dependencies required)
+ * LinkedIn Icon (fully included)
+ * Source: https://simpleicons.org/icons/linkedin.svg
  */
 const LinkedInIcon = () => (
     <svg
         className="social-icon"
         role="img"
         viewBox="0 0 24 24"
-        fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
     >
         <title>LinkedIn</title>
-        <path d="M19 0h-14c-2.761...Z" />
-        {/*
-      Replace the path data above with your preferred LinkedIn SVG path.
-      This is shortened for brevity. Use a full icon path from a source like
-      https://simpleicons.org/?q=linkedin
-    */}
+        <path d="M19 0h-14c-2.7619 0-5 2.2381-5 5v14c0
+             2.7619 2.2381 5 5 5h14c2.7619 0 5-2.2381
+             5-5v-14c0-2.7619-2.2381-5-5-5zm-11.75
+             19h-2.5v-10.5h2.5zm-1.25-12c-.8284 0-1.5-.6716-1.5-1.5s.6716
+             -1.5 1.5-1.5 1.5.6716 1.5
+             1.5-.6716 1.5-1.5 1.5zm13
+             12h-2.5v-5.6c0-.9678-.7822-1.75
+             -1.75-1.75s-1.75.7822-1.75
+             1.75v5.6h-2.5v-10.5h2.5v1.3828c.6575-.8281
+             1.655-1.3828 2.75-1.3828 1.933 0
+             3.5 1.567 3.5 3.5z" />
     </svg>
 );
 
+/**
+ * GitHub Icon (fully included)
+ * Source: https://simpleicons.org/icons/github.svg
+ */
 const GitHubIcon = () => (
     <svg
         className="social-icon"
         role="img"
         viewBox="0 0 24 24"
-        fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
     >
         <title>GitHub</title>
-        <path d="M12 .297c-6.63 0-12 5.373-12 12..." />
-        {/*
-      Replace the path data above with your preferred GitHub SVG path.
-      This is shortened for brevity. Use a full icon path from a source like
-      https://simpleicons.org/?q=github
-    */}
+        <path d="M12 .297c-6.63 0-12 5.373-12
+             12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82
+             -.577v-2.234c-3.338.726-4.033-1.416
+             -4.033-1.416-.546-1.387-1.333-1.757-1.333
+             -1.757-1.089-.744.084-.729.084-.729
+             1.205.084 1.839 1.236 1.839
+             1.236 1.07 1.835 2.807 1.304
+             3.492.997.108-.776.417-1.305.76
+             -1.605-2.665-.305-5.466-1.332
+             -5.466-5.93 0-1.31.469
+             -2.381 1.236-3.221-.123-.304
+             -.536-1.524.117-3.176 0 0 1.008
+             -.322 3.301 1.23.958-.266
+             1.983-.399 3.003-.405
+             1.02.006 2.045.139 3.004.405
+             2.291-1.552 3.299-1.23 3.299
+             -1.23.653 1.652.24 2.872.117
+             3.176.77.84 1.236 1.911 1.236
+             3.221 0 4.61-2.807 5.624
+             -5.479 5.921.43.371.81 1.102.81
+             2.221v3.293c0 .319.216.694.82.576a12.042
+             12.042 0 0 0 8.205-11.385c0
+             -6.627-5.373-12-12-12z" />
     </svg>
 );
 
 /**
  * Experience Section
- * Lists work experience with role, company, location, and bullet points.
  */
 function Experience() {
     return (
@@ -115,7 +138,6 @@ function Experience() {
 
 /**
  * Education Section
- * Lists educational background.
  */
 function Education() {
     return (
@@ -134,7 +156,6 @@ function Education() {
 
 /**
  * Projects Section
- * Displays major projects with descriptions and tech stacks.
  */
 function Projects() {
     return (
@@ -173,7 +194,6 @@ function Projects() {
 
 /**
  * Skills Section
- * Highlights skills in data engineering, AI, etc.
  */
 function Skills() {
     return (
@@ -189,7 +209,6 @@ function Skills() {
 
 /**
  * Languages Section
- * Lists languages with proficiency levels.
  */
 function Languages() {
     return (
@@ -229,7 +248,7 @@ function App() {
 
                     {/* Location / Phone / Email */}
                     <p className="header-contact">
-                        Gent, Belgium &nbsp;|&nbsp; +32 471 661 508 &nbsp;|&nbsp;
+                        Gent, Belgium &nbsp;|&nbsp; +32 471 661 508 &nbsp;|&nbsp;{' '}
                         <a
                             className="contact-link"
                             href="mailto:miguelibrahim2002@gmail.com"
@@ -264,7 +283,6 @@ function App() {
 
             {/* Main content */}
             <main className="app-main">
-                {/* Removed PersonalInfo component to avoid duplication */}
                 <Experience />
                 <Education />
                 <Projects />
