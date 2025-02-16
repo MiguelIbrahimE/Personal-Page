@@ -10,6 +10,11 @@
     box-sizing: border-box;
 }
 
+/* If you want to ensure absolutely no horizontal scroll for the entire page: */
+html, body {
+    overflow-x: hidden; /* no left/right scroll globally */
+}
+
 html, body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #fefefe;
@@ -26,16 +31,16 @@ a:hover {
     text-decoration: underline;
 }
 
-/* 2) App container */
+/* 2) Container */
 .app-container {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* 3) Header (with pinned icons) */
+/* 3) Header */
 .app-header {
-    position: relative; /* allows absolutely positioned children */
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -44,14 +49,12 @@ a:hover {
     border-bottom: 1px solid #ddd;
 }
 
-/* 3a) Left: Profile pic */
 .header-left {
     display: flex;
     align-items: center;
     margin-right: 1rem;
 }
 
-/* Square image with 10% corner rounding */
 .profile-pic {
     width: 120px;
     height: 120px;
@@ -60,7 +63,6 @@ a:hover {
     border: 2px solid #ccc;
 }
 
-/* 3b) Center/Right: Name, contact info */
 .header-right {
     text-align: left;
     margin-right: 4rem;
@@ -84,7 +86,6 @@ a:hover {
     color: #1a73e8;
 }
 
-/* 3c) Pinned icons in top-right corner */
 .header-icons {
     position: absolute;
     top: 1rem;
@@ -103,78 +104,66 @@ a:hover {
 .social-icon {
     width: 24px;
     height: 24px;
-    fill: currentColor; /* inherits color from parent */
+    fill: currentColor;
     transition: color 0.2s ease;
 }
 
 .icon-link:hover .social-icon {
-    color: #0077b5; /* highlight color */
+    color: #0077b5;
 }
 
-/* 4) Main content: 2 columns on wide screens, 1 on narrower screens */
+/* 4) .app-main Container */
 .app-main {
     flex: 1;
     padding: 1rem;
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
-    display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    /* If you don't want multiple columns for other sections,
+       you can keep it simple:
+    */
+    display: block;
 }
 
-/* 5) Section styling & NO TILT on hover */
+/* 5) Basic section styling */
 section {
     background-color: #fff;
     border: 1px solid #ececec;
     padding: 1rem;
     border-radius: 8px;
-    /* removed the transform/rotate */
     transition: box-shadow 0.3s ease-in-out;
+    margin-bottom: 1rem; /* spacing between sections */
 }
 
 section:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* no rotation here */
 }
 
-/* Section headings */
-section h2 {
-    margin-bottom: 0.5rem;
-}
-
-/* 6) PhotoGallery: 2 columns for the photos themselves */
+/* 6) PhotoGallery for 2 columns, no left/right scroll */
 .photo-gallery-section {
-    /* inherits from section styling above */
+    /* If you want it to span 100% page width, do so here.
+       Or keep it within .app-main's width.
+    */
 }
 
 .photo-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 columns wide screens */
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
     grid-gap: 1rem;
     margin-top: 0.5rem;
+    overflow-x: hidden; /* prevent horizontal scroll in the gallery */
 }
 
-/* Single column on smaller screens */
-@media (max-width: 768px) {
-    .photo-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Fix the card height to 300px so photos are smaller */
 .photo-card {
     width: 100%;
-    height: 300px; /* adjust as needed */
-    overflow: hidden;
+    height: 400px; /* or any size you want */
     border-radius: 6px;
+    overflow: hidden;
 }
 
-/* Photo fills the card, but is only 300px tall */
 .photo-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
     transition: transform 0.3s;
 }
 
@@ -182,7 +171,7 @@ section h2 {
     transform: scale(1.03);
 }
 
-/* 7) Footer styling */
+/* 7) Footer */
 .app-footer {
     background-color: #f2f2f2;
     text-align: center;
@@ -190,20 +179,11 @@ section h2 {
     border-top: 1px solid #ddd;
 }
 
-/* 8) Responsive changes for header, etc. */
+/* 8) Responsive
+   - If you'd like 1 column on smaller screens, do that here:
+*/
 @media (max-width: 768px) {
-    .app-header {
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        padding-right: 4rem;
-    }
-
-    .header-right {
-        margin-right: 0;
-        margin-top: 1rem;
-    }
-
-    .app-main {
-        grid-template-columns: 1fr;
+    .photo-grid {
+        grid-template-columns: 1fr; /* 1 column on narrow screens */
     }
 }

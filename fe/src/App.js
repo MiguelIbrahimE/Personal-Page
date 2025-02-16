@@ -83,34 +83,31 @@ const GitHubIcon = () => (
 );
 
 /**
- * PhotoGallery with 2 columns on large screens, each card 250px tall.
- * Wider cards: "minmax(600px, 1fr)" in the CSS to ensure each card is at least 600px wide.
+ * PhotoGallery
+ * - 2 columns -> "grid-template-columns: repeat(2, 1fr);"
+ * - No horizontal scroll -> "overflow-x: hidden;"
  */
 function PhotoGallery() {
-    const images = [
-        '/gent-sint-p.jpeg',
-        '/vw-train.jpeg',
-        '/cat-in-a-jar.jpeg',
-        '/antwerp-c.jpeg',
-        '/abdij.jpeg',
-        '/1898-de-post.jpeg',
-        // Add or remove as needed
-    ];
-
+    const images = ['/gent-sint-p.jpeg', '/vw-train.jpeg', '/antwerp-c.jpeg', '/abdij.jpeg', '/1898-de-post.jpeg', '/abdij-2.jpeg'];
     return (
         <section className="photo-gallery-section">
             <h2>Photography</h2>
-            <p>Now the cards are wider and shorter in height.</p>
-
             <div className="photo-grid">
                 {images.map((src, idx) => (
-                    <div className="photo-card" key={idx}>
-                        <img
-                            src={src}
-                            alt={`photo-${idx}`}
-                            className="photo-image"
-                        />
-                    </div>
+                    <div className="photo-card" key={idx}><img src={src} alt={`photo-${idx}`} className="photo-image" /></div>
+                ))}
+            </div>
+        </section>
+    );
+}
+function FoodGallery() {
+    const images = ['/sandwich.jpeg', '/sweet-chili-shrimp.jpeg', '/ramen.jpeg', '/fancy-dinner.jpeg'];
+    return (
+        <section className="photo-gallery-section">
+            <h2>Food (Part-Time Chef)</h2>
+            <div className="photo-grid">
+                {images.map((src, idx) => (
+                    <div className="photo-card" key={idx}><img src={src} alt={`food-${idx}`} className="photo-image" /></div>
                 ))}
             </div>
         </section>
@@ -167,7 +164,8 @@ function App() {
 
             {/* Main Content */}
             <main className="app-main">
-                <PhotoGallery />
+                <PhotoGallery/>
+                <FoodGallery/>
             </main>
 
             {/* Footer */}
